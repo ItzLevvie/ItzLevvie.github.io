@@ -1,0 +1,13 @@
+<script src="https://code.jquery.com/jquery-git.js"></script>
+<script>
+const configVersion = "v15/10152";
+$.getJSON("https://configs-web.agario.miniclippt.com/live/" + configVersion + "/GameConfiguration.json", function(obj) {
+    document.writeln("<pre>");
+    for (let i = 1, len = obj.gameConfig["Gameplay - Equippable Skins"].length; i < len; i++) {
+        if (obj.gameConfig["Gameplay - Equippable Skins"][i].image == "uses_spine") continue;
+        document.writeln(obj.gameConfig["Gameplay - Equippable Skins"][i].productId.substring(5));
+    }
+    document.writeln();
+    document.writeln("</pre>");
+});
+</script>

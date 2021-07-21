@@ -1,0 +1,13 @@
+<script src="https://code.jquery.com/jquery-git.js"></script>
+<script>
+const configVersion = "v15/10152";
+$.getJSON("https://configs-web.agario.miniclippt.com/live/" + configVersion + "/GameConfiguration.json", function(obj) {
+    document.writeln("<pre>");
+    document.writeln("configVersion=" + configVersion);
+    for (let i = 0, len = obj.gameConfig["Gameplay - Free Skins"].length; i < len; i++) {
+        document.writeln("wget https://configs-web.agario.miniclippt.com/live/$configVersion/" + obj.gameConfig["Gameplay - Free Skins"][i].image + " -O " + obj.gameConfig["Gameplay - Free Skins"][i].id.replace(" ", "\\ ") + ".png > /dev/null 2>&1");
+    }
+    document.writeln();
+    document.writeln("</pre>");
+});
+</script>

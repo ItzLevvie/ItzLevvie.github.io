@@ -1,0 +1,17 @@
+<script src="https://code.jquery.com/jquery-git.js"></script>
+<script>
+const configVersion = "v15/10152";
+$.getJSON("https://configs-web.agario.miniclippt.com/staging/" + configVersion + "/GameConfiguration.json", function(obj) {
+    document.writeln("<pre>");
+    document.writeln("configVersion=" + configVersion);
+    for (let i = 1, len = obj.gameConfig["Gameplay - Equippable Skins"].length; i < len; i++) {
+        if (obj.gameConfig["Gameplay - Equippable Skins"][i].image == "uses_spine") continue;
+        if (obj.gameConfig["Gameplay - Equippable Skins"][i].image == "skin_snow_friend.png") obj.gameConfig["Gameplay - Equippable Skins"][i].image = "snow_friend.png";
+        if (obj.gameConfig["Gameplay - Equippable Skins"][i].image == "skin_best_gift.png") obj.gameConfig["Gameplay - Equippable Skins"][i].image = "best_gift.png";
+        if (obj.gameConfig["Gameplay - Equippable Skins"][i].image == "skin_snow_globe.png") obj.gameConfig["Gameplay - Equippable Skins"][i].image = "snow_globe.png";
+        document.writeln("wget https://configs-web.agario.miniclippt.com/staging/$configVersion/" + obj.gameConfig["Gameplay - Equippable Skins"][i].image + " -O " + obj.gameConfig["Gameplay - Equippable Skins"][i].productId.substring(5) + ".png > /dev/null 2>&1");
+    }
+    document.writeln();
+    document.writeln("</pre>");
+});
+</script>
